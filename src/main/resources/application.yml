@@ -1,0 +1,65 @@
+spring:
+    # Set the active profile (this will read the appropriate values for the environment)
+    profiles:
+        active: H2
+server:
+    port: 8081
+---
+########################
+#
+# H2 PROFILE
+#
+########################
+spring:
+  profiles: H2
+  datasource:
+    driver-class-name: org.h2.Driver
+    password: ''
+    url: jdbc:h2:mem:bootapp;DB_CLOSE_DELAY=-1
+    username: sa
+  h2:
+    console:
+      enabled: true
+      
+
+Hibernate:
+    dialect: org.hibernate.dialect.H2Dialect
+    defaultSchema:
+    formatSql: false
+    showSql: false
+    useSqlComments: true
+    buildDBFromHibernate: true
+    startTCPServer: true    
+    
+logging:
+    level:
+        org.springframework: INFO
+        org.hibernate: INFO
+        com.zaxxer: INFO
+
+---
+########################
+#
+# postgres PROFILE
+#
+########################
+spring:
+  profiles: postgres
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://mole-database-1-instance-1.cwkyc2rrhxdk.eu-west-2.rds.amazonaws.com:5432/mole_recipes
+    username: postgres
+    password: mole1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+logging:
+    level:
+        org.springframework: DEBUG
+        org.hibernate: DEBUG
+        com.zaxxer: DEBUG
