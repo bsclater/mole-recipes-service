@@ -1,9 +1,9 @@
 spring:
     # Set the active profile (this will read the appropriate values for the environment)
     profiles:
-        active: H2
+        active: postgres
 server:
-    port: 8081
+    port: 3000
 ---
 ########################
 #
@@ -47,9 +47,9 @@ spring:
   profiles: postgres
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://mole-database-1-instance-1.cwkyc2rrhxdk.eu-west-2.rds.amazonaws.com:5432/mole_recipes
-    username: postgres
-    password: mole1234
+    url: jdbc:postgresql://mole-db.cxkibtruhmwc.eu-west-2.rds.amazonaws.com:5432/mole
+    username: bill
+    password: ncc1701a
   jpa:
     hibernate:
       ddl-auto: create
