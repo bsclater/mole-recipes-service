@@ -1,0 +1,31 @@
+//TODO
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+description = """MoleRecipes Service"""
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.1.4.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.1.4.RELEASE'
+    compile group: 'org.postgresql', name: 'postgresql', version:'9.3-1100-jdbc41'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version:'2.0.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version:'2.0.2'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.0'
+    runtime group: 'com.h2database', name: 'h2', version:'1.4.199'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.1.4.RELEASE'
+    testCompile group: 'com.jayway.restassured', name: 'rest-assured', version:'2.9.0'
+}
